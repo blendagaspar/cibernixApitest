@@ -1,15 +1,14 @@
-package entities;
+package com.teste.cibernix.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import com.sun.istack.NotNull;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
-@Table(name="td-usuario")
+@Table(name="usuario")
 public class Usuario {
 
     @Id
@@ -20,14 +19,23 @@ public class Usuario {
     private String nome ;
 
     @NotNull
-    private String idade;
+    private int idade;
 
     @NotNull
     private String cpf;
 
-    @OneToMany(mappedBy = "td_usuario", cascade = CascadeType.REMOVE)
-    @JsonIgnoreProperties("td_usuario")
-    private List<Endereço> endereço;
+    @NotNull
+    private String email;
+
+    private String endereco;
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     public long getId() {
         return id;
@@ -45,11 +53,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
@@ -61,11 +69,11 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public List<Endereço> getEndereço() {
-        return endereço;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEndereço(List<Endereço> endereço) {
-        this.endereço = endereço;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

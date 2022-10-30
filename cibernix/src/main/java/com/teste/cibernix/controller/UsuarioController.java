@@ -1,13 +1,12 @@
-package controller;
+package com.teste.cibernix.controller;
 
-import entities.Usuario;
+import com.teste.cibernix.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import repository.UsuarioRepository;
+import com.teste.cibernix.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +38,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
-    @PutMapping
+    @PutMapping("/atualizar_usuario")
     public ResponseEntity<Usuario> putPostagem (@RequestBody Usuario usuario){
 
         Optional<Usuario> postagemUpdate = usuarioRepository.findById(usuario.getId());
