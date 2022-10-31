@@ -11,8 +11,8 @@
 <p>🛠️Postgresql</p> 
 <p>🛠️Swagger</p>
 <p>🛠️Junit 4</p>
-<p>SpringData</p>
-<p>flyway</p>
+<p>🛠️SpringData</p>
+<p>🛠️flyway</p>
 <p>🛠️Mockito</p>
 <p>🛠️Maven</p>
   
