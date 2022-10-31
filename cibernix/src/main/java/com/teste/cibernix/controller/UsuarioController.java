@@ -21,7 +21,7 @@ public class UsuarioController {
 
 
 
-    @GetMapping("/listar_todos_usuarios")
+    @GetMapping()
     public ResponseEntity<List<Usuario>> listarTodosUsuarios() {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
@@ -32,14 +32,20 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{nome}")
+    public ResponseEntity<Usuario> listarUsuarioPorNome(@PathVariable String nome){
+        return usuarioRepository.findByNome(nome).map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 
     @PostMapping
-    public ResponseEntity<Usuario> postPostagem (@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> criarUsuario (@RequestBody Usuario usuario){
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
     @PutMapping("/atualizar_usuario")
-    public ResponseEntity<Usuario> putPostagem (@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> atualizarUsuario (@RequestBody Usuario usuario){
 
         Optional<Usuario> postagemUpdate = usuarioRepository.findById(usuario.getId());
 

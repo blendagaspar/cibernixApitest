@@ -2,11 +2,16 @@ package com.teste.cibernix.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -19,7 +24,7 @@ public class Usuario {
     private String nome ;
 
     @NotNull
-    private int idade;
+    private String idade;
 
     @NotNull
     private String cpf;
@@ -29,51 +34,18 @@ public class Usuario {
 
     private String endereco;
 
-    public String getEndereco() {
-        return endereco;
+    public  Usuario(
+            final String nome,
+            final String idade ,
+            final String cpf,
+            final String email,
+            final String endereco ) {
+
+       this.nome = nome;
+       this.idade = idade;
+       this.cpf = cpf;
+       this.email = email;
+       this.endereco = endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
